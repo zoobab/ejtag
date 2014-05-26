@@ -1,0 +1,7 @@
+TARGETNAME=eppflex
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+
+SOURCES=eppflex.c \
+	eppflex.rc
+

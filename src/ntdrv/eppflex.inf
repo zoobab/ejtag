@@ -1,0 +1,57 @@
+[Version]
+Signature="$CHICAGO$"
+Class=Ports
+provider=%MSFT%
+;LayoutFile=layout.inf
+DriverVer=07/21/2000,1.0.0.1
+
+[SourceDisksNames]
+1="EPPFLEX Installation Disk",,,""
+
+[SourceDisksFiles]
+eppflex.sys = 1,,
+
+[Manufacturer]
+%MfgName%=Baycom
+
+[Baycom]
+%EppFlexDev.DeviceDesc%=EPPFLEX_Dev
+
+;[PreCopySection]
+;HKR,,NoSetupUI,,1
+
+[DestinationDirs]
+EPPFLEX.Files.Ext = 10,System32\Drivers
+
+[EPPFLEX_Dev.NT]
+CopyFiles=EPPFLEX.Files.Ext
+AddReg=EPPFLEX.AddReg
+
+[EPPFLEX_Dev.NT.Services]
+Addservice = EPPFLEX, 0x00000002, EPPFLEX.AddService
+
+[EPPFLEX.AddService]
+DisplayName    = %EPPFLEX.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\eppflex.sys
+LoadOrderGroup = Base
+
+[EPPFLEX.AddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,eppflex.sys
+;HKLM,"System\Currentcontrolset\Services\USBFLEX\Parameters","TotalBuffers",0x10001,256
+
+
+[EPPFLEX.Files.Ext]
+eppflex.sys
+
+;---------------------------------------------------------------;
+
+[Strings]
+MSFT="Baycom"
+MfgName="Baycom Hard- und Software GmbH"
+EppFlexDev.DeviceDesc="EPPFLEX Radio Modem"
+EPPFLEX.SvcDesc="eppflex.sys EPPFLEX Modem Driver"
+

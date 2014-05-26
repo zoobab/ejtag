@@ -1,0 +1,147 @@
+%% pdflatex or latex
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+  \pdffalse
+\else
+  \pdfoutput=1
+  \pdftrue
+\fi
+
+\ifpdf
+\documentclass[a4paper,10pt,pdftex]{article}
+\else
+\documentclass[a4paper,10pt,dvips]{article}
+\fi
+\usepackage[german,english]{babel}
+\selectlanguage{english}
+\usepackage{graphicx}
+\usepackage[isolatin]{inputenc}
+\usepackage{array}
+\usepackage{amsmath}
+\frenchspacing
+\pagestyle{plain}
+\usepackage[left=2cm,right=2cm]{geometry}
+%
+\clubpenalty=4000
+\widowpenalty=4000
+%
+
+\ifpdf
+\usepackage[pdftex]{color}
+
+% The hyperref package makes sure that all references in your
+% document become colored clickable links.
+%\usepackage[colorlinks,hyperindex]{hyperref}
+\usepackage[hyperindex]{hyperref}
+  \hypersetup{pdftitle={Digital Transceiver 1 Internals},
+    pdfsubject={Digital Transceiver 1 Internals},
+    pdfauthor={Thomas M. Sailer, HB9JNX/AE4WA},
+    pdfkeywords={Digital Transceiver},
+%% pdfpagemode={FullScreen}
+}
+
+% supress the ugly colored boxes around the active parts of the
+% text.
+\def\pdfBorderAttrs{/Border [0 0 0] } % No border around Links
+% Some further Color tuning. Use xcolorsel for help with the colors
+\definecolor{links}{rgb}{0.2116,0.0104,0.7716} % BlueViolet
+\def\LinkColor{links}
+\definecolor{anchors}{rgb}{0.5812,0.0665,0.0659} % IndianRed  
+\def\AnchorColor{anchors}
+
+\hypersetup{bookmarks=true,bookmarksopen=true,bookmarksopenlevel=1,bookmarksnumbered=true}
+
+%\DeclareGraphicsRule{.tiff}{tif}{.tiff}{}
+%\DeclareGraphicsExtensions{.jpg,.pdf,.tif}
+
+\else
+%\usepackage[hyperindex,dvips]{hyperref}
+\usepackage[hyperindex,hypertex]{hyperref}
+\def\pdfBorderAttrs{/Border [0 0 0] } % No border around Links
+\fi
+
+%
+\makeatletter
+\newcommand{\jnxbookmark}[1]{\ifpdf
+\ifx\@currentHref\@empty\phantomsection\fi
+\Hy@writebookmark{}{#1}{\@currentHref}{-1}{toc}\fi}
+\makeatother
+%
+%\input{psfig}
+%
+\newcommand{\jnxfig}[3][]{\ifpdf\includegraphics[#1]{#3}
+  \else\includegraphics[#1]{#2}\fi}
+%
+
+\begin{document}
+\sloppy
+
+\title{AMD Alchemy EJTAG Tool}
+\author{Thomas M. Sailer, HB9JNX/AE4WA}
+
+%
+\makeatletter
+\newpage\thispagestyle{empty}
+\noindent\begin{minipage}{\textwidth}
+  \flushright
+  {\sffamily\bfseries\Huge\@title}
+  \noindent\rule[-1ex]{\textwidth}{5pt}\\[5ex]
+  {\sffamily\Large\@author}\\[1.5ex]
+  {\sffamily\Large\@date}\\[5ex]
+\end{minipage}
+\makeatother
+%
+\tableofcontents
+
+\section{JTAG Cable Pinout}
+
+Refer to Table \ref{tab:jtagcable}. Pins 9 and 10 do not really
+exist, but it is difficult to obtain ribbon cable header connectors
+with only 8 pins. Busy is connected to ground, to allow cable
+detection and to prevent any parport state machine from locking
+up. nStrobe and nAck are connected together, for additional detection
+and to avoid Parport state machine lockups.
+
+\newcommand\negsig[1]{$\overline{\textrm{#1}}$}
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{lrlr}
+    \multicolumn{2}{c}{PIC Header} & \multicolumn{2}{c}{PC Parallel Port} \\
+    Signal Name & Pin Number & Signal Name & Pin Number \\\hline%\vspace{\doublerulesep}
+    \negsig{TRST}   &   1 & D3      &  5 \\
+    GND             &   2 & GND     & 18 \\
+    TDI             &   3 & D4      &  6 \\
+    GND             &   4 & GND     & 19 \\
+    TDO             &   5 & PError  & 12 \\
+    GND             &   6 & GND     & 20 \\
+    TMS             &   7 & D6      &  8 \\
+    GND             &   8 & GND     & 21 \\
+    TCK             &   9 & D7      &  9 \\
+    GND             &  10 & GND     & 22 \\
+    \negsig{RST}    &  11 & nInit   & 16 \\
+    KEY             &  12 & GND     & 23 \\
+    DINT            &  13 & nFault  & 15 \\
+    VIO             &  14 & Select  & 13 \\
+                    &     & Busy    & 11 \\
+                    &     & GND     & 24 \\
+                    &     & nStrobe &  1 \\
+                    &     & nAck    & 10 \\
+  \end{tabular}
+  \caption{JTAG Cable}
+  \label{tab:jtagcable}
+\end{table}
+
+% \begin{figure}[!htbp]
+%   \begin{center}
+%     \jnxfig[angle=0,width=\textwidth]{calibdiag.eps}{calibdiag.pdf}
+%     \caption{Calibration Diagram}
+%     \label{fig:calibdiag}
+%   \end{center}
+% \end{figure}
+
+\raggedright
+\bibliography{cc,teletext,dvb,ham}
+\bibliographystyle{base/plain}
+
+\end{document}

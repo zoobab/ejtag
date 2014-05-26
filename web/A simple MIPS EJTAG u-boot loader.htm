@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+
+<script type="text/javascript" src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/analytics.js"></script>
+<link type="text/css" rel="stylesheet" href="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/banner-styles.css">
+
+
+
+
+  <title>A simple MIPS EJTAG u-boot loader</title>
+  <meta name="AUTHOR" content="Thomas Sailer">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body><div id="wm-ipp" class="__wb_banner_div" style="display: block; position: relative; padding: 0px 5px; min-height: 70px; min-width: 800px;" lang="en">
+
+
+<div id="wm-ipp-inside" class="__wb_banner_div" style="position:fixed;padding:0!important;margin:0!important;width:97%;min-width:780px;border:5px solid #000;border-top:none;background-image:url(/static/images/toolbar/wm_tb_bk_trns.png);text-align:center;-moz-box-shadow:1px 1px 3px #333;-webkit-box-shadow:1px 1px 3px #333;box-shadow:1px 1px 3px #333;font-size:11px!important;font-family:'Lucida Grande','Arial',sans-serif!important;">
+   <table style="border-collapse:collapse;margin:0;padding:0;width:100%;"><tbody><tr>
+   <td style="padding:10px;vertical-align:top;min-width:110px;">
+   <a href="https://web.archive.org/web/" title="Wayback Machine home page" style="background-color:transparent;border:none;"><img src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/wayback-toolbar-logo.png" alt="Wayback Machine" height="39" border="0" width="110"></a>
+   </td>
+   <td style="padding:0!important;text-align:center;vertical-align:top;width:100%;">
+
+       <table style="border-collapse:collapse;margin:0 auto;padding:0;width:570px;"><tbody><tr>
+       <td style="padding:3px 0;" colspan="2">
+       <form target="_top" method="get" action="/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin:0!important;padding:0!important;"><input name="url" id="wmtbURL" value="http://www.baycom.org/%7Etom/ejtag/" style="width:400px;font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" type="text"><input name="type" value="replay" type="hidden"><input name="date" value="20070107110736" type="hidden"><input value="Go" style="font-size:11px;font-family:'Lucida Grande','Arial',sans-serif;margin-left:5px;width: inherit !important" type="submit"><span id="wm_tb_options" style="display:block;"></span></form>
+       </td>
+       <td style="vertical-align:bottom;padding:5px 0 0 0!important;" rowspan="2">
+           <table style="border-collapse:collapse;width:110px;color:#99a;font-family:'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody>
+			
+           <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+           <tr style="width:110px;height:16px;font-size:10px!important;">
+           	<td style="padding-right:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+		                <a href="https://web.archive.org/web/20061013065818/http://www.baycom.org/%7Etom/ejtag/" style="text-decoration:none;color:#33f;font-weight:bold;background-color:transparent;border:none;" title="13 Oct 2006"><strong>OCT</strong></a>
+		                
+               </td>
+               <td id="displayMonthEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight:bold;text-transform:uppercase;width:34px;height:15px;padding-top:1px;text-align:center;" title="You are here: 11:07:36 Jan 7, 2007">JAN</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight:bold;text-transform:uppercase;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+		                <a href="https://web.archive.org/web/20070529092253/http://www.baycom.org/%7Etom/ejtag" style="text-decoration:none;color:#33f;font-weight:bold;background-color:transparent;border:none;" title="29 May 2007"><strong>MAY</strong></a>
+		                
+               </td>
+           </tr>
+
+           <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+           <tr>
+               <td style="padding-right:9px;white-space:nowrap;overflow:visible;text-align:right!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+		                <a href="https://web.archive.org/web/20070102190729/http://www.baycom.org/%7Etom/ejtag/" title="19:07:29 Jan 2, 2007" style="background-color:transparent;border:none;"><img src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/wm_tb_prv_on.png" alt="Previous capture" height="16" border="0" width="14"></a>
+		                
+               </td>
+               <td id="displayDayEl" style="background:#000;color:#ff0;width:34px;height:24px;padding:2px 0 0 0;text-align:center;font-size:24px;font-weight: bold;" title="You are here: 11:07:36 Jan 7, 2007">7</td>
+				<td style="padding-left:9px;white-space:nowrap;overflow:visible;text-align:left!important;vertical-align:middle!important;" nowrap="nowrap">
+               
+		                <a href="https://web.archive.org/web/20070112094638/http://www.baycom.org/%7Etom/ejtag/" title="9:46:38 Jan 12, 2007" style="background-color:transparent;border:none;"><img src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/wm_tb_nxt_on.png" alt="Next capture" height="16" border="0" width="14"></a>
+		                
+			    </td>
+           </tr>
+
+           <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+           <tr style="width:110px;height:13px;font-size:9px!important;">
+				<td style="padding-right:9px;font-size:11px!important;font-weight: bold;text-align:right;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+		                <a href="https://web.archive.org/web/20050415231456/http://www.baycom.org/%7Etom/ejtag/" style="text-decoration:none;color:#33f;font-weight:bold;background-color:transparent;border:none;" title="15 Apr 2005"><strong>2005</strong></a>
+		                
+               </td>
+               <td id="displayYearEl" style="background:#000;color:#ff0;font-size:11px!important;font-weight: bold;padding-top:1px;width:34px;height:13px;text-align:center;" title="You are here: 11:07:36 Jan 7, 2007">2007</td>
+				<td style="padding-left:9px;font-size:11px!important;font-weight: bold;white-space:nowrap;overflow:visible;" nowrap="nowrap">
+               
+		                <a href="https://web.archive.org/web/20080204211922/http://www.baycom.org/%7Etom/ejtag/" style="text-decoration:none;color:#33f;font-weight:bold;background-color:transparent;border:none;" title="4 Feb 2008"><strong>2008</strong></a>
+		                
+				</td>
+           </tr>
+           </tbody></table>
+       </td>
+
+       </tr>
+       <tr>
+       <td style="vertical-align:middle;padding:0!important;">
+           <a href="https://web.archive.org/web/20070107110736*/http://www.baycom.org/%7Etom/ejtag/" style="color:#33f;font-size:11px;font-weight:bold;background-color:transparent;border:none;" title="See a list of every capture for this URL"><strong>60 captures</strong></a>
+           <div class="__wb_banner_div" style="margin:0!important;padding:0!important;color:#666;font-size:9px;padding-top:2px!important;white-space:nowrap;" title="Timespan for captures of this URL">19 Feb 05 - 26 Oct 13</div>
+       </td>
+       <td style="padding:0!important;">
+       <a style="position:relative; white-space:nowrap; width:475px;height:27px;" href="" id="wm-graph-anchor">
+       <div class="__wb_banner_div" id="wm-ipp-sparkline" style="position:relative; white-space:nowrap; width:475px;height:27px;background-color:#fff;cursor:pointer;border-right:1px solid #ccc;" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position:absolute; z-index:9012; top:0px; left:0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/graph.png" height="27" border="0" width="475">
+			<img id="wbMouseTrackYearImg" style="display:none; position:absolute; z-index:9010;" src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/transp-yellow-pixel.png" height="27" border="0" width="25">
+			<img id="wbMouseTrackMonthImg" style="display:none; position:absolute; z-index:9011; " src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/transp-red-pixel.png" height="27" border="0" width="2">
+       </div>
+		</a>
+
+       </td>
+       </tr></tbody></table>
+   </td>
+   <td style="text-align:right;padding:5px;width:65px;font-size:11px!important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display:block;padding-right:18px;background:url(/static/images/toolbar/wm_tb_close.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;margin-bottom:23px;background-color:transparent;border:none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display:block;padding-right:18px;background:url(/static/images/toolbar/wm_tb_help.png) no-repeat 100% 0;color:#33f;font-family:'Lucida Grande','Arial',sans-serif;background-color:transparent;border:none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table>
+
+</div>
+</div>
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script> if (window.archive_analytics) { window.archive_analytics.values['server_name']="wwwb-app14.us.archive.org";}; </script>
+
+<script type="text/javascript" src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/disclaim-element.js"></script>
+<script type="text/javascript" src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/graph-calc.js"></script>
+<script type="text/javascript" src="A%20simple%20MIPS%20EJTAG%20u-boot%20loader_files/jquery.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1420070399999;
+var wbPrefix = "/web/";
+var wbCurrentUrl = "http:\/\/www.baycom.org\/%7Etom\/ejtag\/";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 18;
+var firstYear = 1996;
+var imgWidth = 475;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "7";
+var displayMonth = "Jan";
+var displayYear = "2007";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]>
+</script>
+
+<style type="text/css">body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}</style>
+
+<script type="text/javascript">
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+</script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+
+
+<h1>A simple MIPS EJTAG u-boot loader</h1>
+
+<h2>What is it?</h2>
+
+<p>This program allows you to connect a MIPS EJTAG capable CPU to the PC
+ parallel port. The CPU can then be booted from the PC, i.e. the PC 
+loads the u-boot bootloader into the MIPS target SDRAM, and runs it. 
+That way, you can bring up a MIPS board without having a programmed 
+FLASH or similar on board.</p>
+
+<p>I have tested it on an AMD Alchemy Pb1000 board. It takes roughly 37 seconds to load u-boot into memory.</p>
+
+<h2>Files</h2>
+
+<table border="0">
+  <thead>
+    <tr>
+      <th align="left">File Name</th>
+      <th align="right">Size</th>
+      <th align="left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="left"><a href="https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/ejtag-0.2.tar.gz">ejtag-0.2.tar.gz</a></td>
+      <td align="right">307687</td>
+      <td align="left">Source Code</td>
+    </tr>
+    <tr>
+      <td align="left"><a href="https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-0.2-1.src.rpm">mips-ejtag-0.2-1.src.rpm</a></td>
+      <td align="right">308922</td>
+      <td align="left">RPM source package</td>
+    </tr>
+    <tr>
+      <td align="left"><a href="https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-0.2-1.i386.rpm">mips-ejtag-0.2-1.i386.rpm</a></td>
+      <td align="right">140002</td>
+      <td align="left">RPM binary package compiled for i386 Fedora Core 3</td>
+    </tr>
+    <tr>
+      <td align="left"><a href="https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-debuginfo-0.2-1.i386.rpm">mips-ejtag-debuginfo-0.2-1.i386.rpm</a></td>
+      <td align="right">47203</td>
+      <td align="left">Debuginfo RPM Package</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<em>Thomas Sailer</em>
+
+
+
+
+
+
+
+
+
+</body></html>
+<!--
+     FILE ARCHIVED ON 11:07:36 Jan 7, 2007 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 9:09:28 May 16, 2014.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->

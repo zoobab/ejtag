@@ -1,0 +1,72 @@
+BUILD_TYPE=base
+!INCLUDE $(BASEDIR)\inc\master.mk
+
+# sample make file for building vxd virtual device for Windows
+
+NAME = eppflex
+
+#       Definitions for the debug level 
+
+!ifdef DEBUG
+DDEBUG  =-DDEBLEVEL=1 -DDEBUG
+!else
+DDEBUG  =-DDEBLEVEL=0
+!endif
+
+#       Definitions for MASM 6 Assembler
+
+CC         = cl
+ASM        = ml
+ASMENV     = ML
+CFLAGS     = -DWIN32 -DCON -Di386 -D_X86_ -D_NTWIN -W3 -Gs -D_DEBUG -Zi -I$(INC32)
+CVXDFLAGS  = -Oi -Zdp -Gs -c -DIS_32 -Zl -DDEBLEVEL=1 -DDEBUG -DWANTVXDWRAPS=1 -I$(INC32)
+LFLAGS     = -machine:i386 -debug:notmapped,full -debugtype:cv -VXD $(BASEDIR)\lib\i386\free\vxdwraps.clb
+AFLAGS     = -coff -DBLD_COFF -DIS_32 -W2 -Zd -c -Cx -DMASM6 -DDEBLEVEL=1 -DDEBUG -I$(INC32)
+
+#       MASM 6 only inference rules
+
+.asm{obj\i386}.obj:
+	set $(ASMENV)=$(AFLAGS)
+	$(ASM) -Fo$*.obj $< 
+
+.c{obj\i386}.obj:
+	$(CC) $(CVXDFLAGS) -Fo$@ %s
+
+.rc{obj\i386}.res:
+	$(RC16B) -r -i $(INC16);$(INC32) -fo$@ %s
+
+all : obj\i386\$(NAME).vxd
+
+OBJS = obj\i386\eppflex.obj obj\i386\eppfctrl.obj
+
+obj\i386\vxdstub.exe: obj\i386\vxdstub.obj
+!ifndef PASS0ONLY
+	@echo link -OUT:$@
+	$(LINK16) obj\i386\vxdstub.obj;
+!endif
+
+obj\i386\generic.obj: generic.asm
+
+obj\i386\$(NAME).vxd: $(NAME).def $(OBJS) obj\i386\$(NAME).res
+!ifndef PASS0ONLY
+		@echo link -OUT:$@
+        link @<<obj\i386\$(NAME).lnk
+$(LFLAGS) 
+-ignore:4078 -ignore:4039
+/OUT:obj\i386\$(NAME).vxd
+/MAP:obj\i386\$(NAME).map
+/DEF:$(NAME).def
+$(OBJS)
+<<
+	$(DDKROOT)\bin\Win98\adrc2vxd.exe obj\i386\$(NAME).vxd obj\i386\$(NAME).res
+        mapsym -s -o obj\i386\$(NAME).sym obj\i386\$(NAME).map
+!endif
+
+clean:
+    -@if exist obj\i386\*.obj del obj\i386\*.obj
+    -@if exist obj\i386\*.vxd del obj\i386\*.vxd
+    -@if exist obj\i386\*.exp del obj\i386\*.exp
+    -@if exist obj\i386\*.lib del obj\i386\*.lib
+    -@if exist obj\i386\*.map del obj\i386\*.map
+    -@if exist obj\i386\*.sym del obj\i386\*.sym
+    -@if exist *.bak del *.bak
