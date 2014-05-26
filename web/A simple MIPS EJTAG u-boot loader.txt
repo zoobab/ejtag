@@ -1,0 +1,52 @@
+                                                                     _____________________ [ Go ]                 OCT              JAN  MAY
+                                                     Wayback Machine 60 captures           sparklines [IMG] [IMG] Previous capture 7    Next capture Close Help
+                                                                     19 Feb 05 - 26 Oct 13                        2005             2007 2008
+
+                                                                                         A simple MIPS EJTAG u-boot loader
+
+What is it?
+
+   This program allows you to connect a MIPS EJTAG capable CPU to the PC parallel port. The CPU can then be booted from the PC, i.e. the PC loads the u-boot bootloader into the MIPS target SDRAM, and runs it.
+   That way, you can bring up a MIPS board without having a programmed FLASH or similar on board.
+
+   I have tested it on an AMD Alchemy Pb1000 board. It takes roughly 37 seconds to load u-boot into memory.
+
+Files
+
+   File Name                             Size Description
+   ejtag-0.2.tar.gz                    307687 Source Code
+   mips-ejtag-0.2-1.src.rpm            308922 RPM source package
+   mips-ejtag-0.2-1.i386.rpm           140002 RPM binary package compiled for i386 Fedora Core 3
+   mips-ejtag-debuginfo-0.2-1.i386.rpm  47203 Debuginfo RPM Package
+
+   --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+   Thomas Sailer
+
+References
+
+   Visible links
+   . https://web.archive.org/web/
+   . 13 Oct 2006
+	https://web.archive.org/web/20061013065818/http://www.baycom.org/%7Etom/ejtag/
+   . 29 May 2007
+	https://web.archive.org/web/20070529092253/http://www.baycom.org/%7Etom/ejtag
+   . https://web.archive.org/web/20070102190729/http://www.baycom.org/%7Etom/ejtag/
+   . https://web.archive.org/web/20070112094638/http://www.baycom.org/%7Etom/ejtag/
+   . 15 Apr 2005
+	https://web.archive.org/web/20050415231456/http://www.baycom.org/%7Etom/ejtag/
+   . 4 Feb 2008
+	https://web.archive.org/web/20080204211922/http://www.baycom.org/%7Etom/ejtag/
+   . See a list of every capture for this URL
+	https://web.archive.org/web/20070107110736*/http://www.baycom.org/%7Etom/ejtag/
+   . file:///home/zoobab/soft/ejtag/web/
+   . file:///home/zoobab/soft/ejtag/web/
+   . file:///home/zoobab/soft/ejtag/web/
+   . Close the toolbar
+	javascript:;
+   . Get some help using the Wayback Machine
+	http://faq.web.archive.org/
+   . https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/ejtag-0.2.tar.gz
+   . https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-0.2-1.src.rpm
+   . https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-0.2-1.i386.rpm
+   . https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-debuginfo-0.2-1.i386.rpm
