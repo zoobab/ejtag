@@ -22,8 +22,8 @@ A simple MIPS EJTAG u-boot loader
 
 ##Links##
 
-	https://web.archive.org/web/20070112094638/http://www.baycom.org/%7Etom/ejtag/
-	https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/ejtag-0.2.tar.gz
-	https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-0.2-1.src.rpm
-	https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-0.2-1.i386.rpm
-	https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-debuginfo-0.2-1.i386.rpm
+* https://web.archive.org/web/20070112094638/http://www.baycom.org/%7Etom/ejtag/
+* https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/ejtag-0.2.tar.gz
+* https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-0.2-1.src.rpm
+* https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-0.2-1.i386.rpm
+* https://web.archive.org/web/20070107110736/http://www.baycom.org/%7Etom/ejtag/mips-ejtag-debuginfo-0.2-1.i386.rpm
